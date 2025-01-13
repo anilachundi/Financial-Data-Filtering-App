@@ -25,7 +25,6 @@ def fetch_and_convert_to_dataframe(api_url):
 
 
 secret_token = os.environ.get("MY_SECRET_TOKEN")
-print(secret_token)
 
 api_url = 'https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=' + str(secret_token)
 df = fetch_and_convert_to_dataframe(api_url)
