@@ -3,6 +3,12 @@ import requests
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+import os
+import requests
+from dotenv import load_dotenv
+
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -17,7 +23,16 @@ def fetch_and_convert_to_dataframe(api_url):
     return data_frame[["date", "revenue", "netIncome", "grossProfit", "eps", "operatingIncome"]]
 
 
-api_url = 'https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=P9wVB0s4uzpr9nIhggYndhy97IpVL3oA'
+# load_dotenv()
+# github_token = os.getenv("ACCESS_API_KEY")
+
+# if not github_token:
+#     raise ValueError("GitHub token not found. Please set it as an environment variable or in a .env file.")
+
+secret_token = os.environ.get("MY_SECRET_TOKEN")
+print(secret_token)
+
+api_url = 'https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=' + str(secret_token)
 df = fetch_and_convert_to_dataframe(api_url)
 
 if df is not None:
