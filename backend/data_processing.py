@@ -23,11 +23,6 @@ def fetch_and_convert_to_dataframe(api_url):
     return data_frame[["date", "revenue", "netIncome", "grossProfit", "eps", "operatingIncome"]]
 
 
-# load_dotenv()
-# github_token = os.getenv("ACCESS_API_KEY")
-
-# if not github_token:
-#     raise ValueError("GitHub token not found. Please set it as an environment variable or in a .env file.")
 
 secret_token = os.environ.get("MY_SECRET_TOKEN")
 print(secret_token)
